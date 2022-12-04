@@ -38,28 +38,13 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-jdbc-h2</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-jacoco</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/io.quarkus/quarkus-junit5-mockito -->
-	<dependency>
-	    <groupId>io.quarkus</groupId>
-	    <artifactId>quarkus-junit5-mockito</artifactId>
-	    <version>2.15.0.CR1</version>
-	    <scope>test</scope>
-	</dependency>
-
-    <dependency>
-      <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy</artifactId>
     </dependency>
+        <!-- JSONB serialize JSON -->
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy-jsonb</artifactId>
+
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -73,6 +58,16 @@
     <dependency>
       <groupId>io.rest-assured</groupId>
       <artifactId>rest-assured</artifactId>
+      <scope>test</scope>
+    </dependency>
+        <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-jacoco</artifactId>
+      <scope>test</scope>
+    </dependency>
+     <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-junit5-mockito</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>

@@ -48,7 +48,7 @@ public class CarResource {
     }
 
     @GET
-    @Path("/countCarsAvaiableSale")
+    @Path("/countCarsAvailableSale")
     public Long countCarsAvaiableSale() {
         return Car.count("isAvailableSale", true);
     }
@@ -56,7 +56,9 @@ public class CarResource {
     @GET
     @Path("/listByPage")
     public List<Car> listCarByPage(@QueryParam("page") int page, @QueryParam("size") int size) {
-        PanacheQuery<Car> listCars = Car.find("isAvailableSale", true);
+//        PanacheQuery<Car> listCars = Car.findAll(); //teste lu
+    	PanacheQuery<Car> listCars = Car.find("is_available_sale", false);
+        List<Car> x = listCars.page(Page.of(page, size)).list();
         return listCars.page(Page.of(page, size)).list();
     }
 

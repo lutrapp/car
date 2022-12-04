@@ -1,4 +1,4 @@
-INSERT INTO public.car (brand,created_date_time,is_available_sale,model_year,name,price) VALUES
+INSERT INTO carro.car (brand,created_date_time,is_available_sale,model_year,name,price) VALUES
 ('Ferrari','2019-12-17 11:07:52.952',false,'2007-01-01','Ferrari 488',7245262542.00)
 ,('Porsche','2019-12-17 11:09:44.859',true,'2008-01-01','Porsche 718 Cayman',3245262542.00)
 ,('Bugatti','2019-12-17 11:10:48.841',false,'2012-01-01','Bugatti Chiron Sport',4245262542.00)

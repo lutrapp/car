@@ -52,9 +52,9 @@ public class CarV2Resource {
     }
 
     @GET
-    @Path("/countCarsAvaiableSale")
+    @Path("/countCarsAvailableSale")
     public Long countCarsAvaiableSale() {
-        return carRepository.countCarsAvaiableSale();
+        return carRepository.countCarsAvailableSale();
     }
 
     @GET

@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
@@ -18,14 +19,16 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import acc.br.model.Car;
+import acc.br.repository.CarRepository;
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.junit.mockito.InjectMock;
 import io.restassured.http.ContentType;
 
 @QuarkusTest
-public class CarResourceTest {
+public class CarV2ResourceTest {
 	
-//	@InjectMock CarRepository carRepository; //declaração do métodos
-//	@Inject CarResource carResource; //implementação
+	@InjectMock CarRepository carRepository; //declaração do métodos
+	@Inject CarResource carResource; //implementação
 	private Car car;
 	
 	  @BeforeEach
@@ -39,6 +42,16 @@ public class CarResourceTest {
 		car.setPrice(new BigDecimal("56"));
 		car.setAvailableSale(true);
 	  }
+	  
+//	  @Test
+//		@DisplayName("should show all cars")
+//		public void listAllTest() {	
+//		  List<Car> cars = new ArrayList();
+//		  cars.add(car);
+//		  Mockito.when(carRepository.listAll()).thenReturn(cars);
+//		  List<Car> response = carResource.listAll();
+//		  Assertions.assertNotNull(response);
+//	  }
 	 	  
 	 	  
 	@Test
@@ -49,7 +62,7 @@ public class CarResourceTest {
 				.contentType(ContentType.JSON)
 				.body(car)
 				.when()
-					.post("/cars")
+					.post("/cars/v2")
 				.then()
 					.extract().response();
 		
@@ -62,7 +75,7 @@ public class CarResourceTest {
 	public void listAllTest() {	
 		var response = given()
 				.when()
-					.get("/cars")
+					.get("/cars/v2")
 				.then()
 					.extract().response();;
 		
@@ -75,7 +88,7 @@ public class CarResourceTest {
 	public void listAllCarToSaleTest() {	
 		var response = given()
 				.when()
-					.get("/cars/isAvaliableSale")
+					.get("/cars/v2/isAvaliableSale")
 				.then()
 					.extract().response();;
 		
@@ -88,7 +101,7 @@ public class CarResourceTest {
 	public void countTest() {	
 		var response = given()
 				.when()
-					.get("/cars/count")
+					.get("/cars/v2/count")
 				.then()
 					.extract().response();;
 		
@@ -101,7 +114,7 @@ public class CarResourceTest {
 	public void listCarSortNameAndBrandTest() {	
 		var response = given()
 				.when()
-					.get("/cars/listCarSortNameAndBrand")
+					.get("/cars/v2/listCarSortNameAndBrand")
 				.then()
 					.extract().response();;
 		
@@ -114,7 +127,7 @@ public class CarResourceTest {
 	public void listCarsByYearTest() {	
 		var response = given()
 				.when()
-					.get("/cars/listCarsByYear")
+					.get("/cars/v2/listCarsByYear")
 				.then()
 					.extract().response();;
 		
@@ -127,7 +140,7 @@ public class CarResourceTest {
 	public void countCarsAvaiableSaleTest() {	
 		var response = given()
 				.when()
-					.get("/cars/countCarsAvailableSale")
+					.get("/cars/v2/countCarsAvailableSale")
 				.then()
 					.extract().response();;
 		
@@ -146,7 +159,7 @@ public class CarResourceTest {
 		int size = 2;
 		var response = given()
 				.when()
-					.get("/cars/listByPage?page="+page+ "&size="+size)
+					.get("/cars/v2/listByPage?page="+page+ "&size="+size)
 //					.get("/cars/listByPage/")
 				.then()
 					.extract().response();;
@@ -162,7 +175,7 @@ public class CarResourceTest {
 		Long id = 1L;
 		var response = given()
 				.when()
-					.delete("/cars/"+id)
+					.delete("/cars/v2/"+id)
 				.then()
 					.extract().response();;
 		
@@ -178,7 +191,7 @@ public class CarResourceTest {
 		WebApplicationException exception = new WebApplicationException("Car with id " + id + " does not exist.", Response.Status.NOT_FOUND);
 		given()
 				.when()
-					.delete("/cars/"+id)
+					.delete("/cars/v2/"+id)
 				.then()
 					.extract().response();;
 		Assertions.assertEquals(404, exception.getResponse().getStatus());
@@ -193,7 +206,7 @@ public class CarResourceTest {
 				.when()
 				.contentType(ContentType.JSON)
 				.body(car)
-					.put("/cars/"+id)
+					.put("/cars/v2/"+id)
 				.then()
 					.extract().response();;
 		

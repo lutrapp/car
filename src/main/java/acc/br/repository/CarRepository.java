@@ -60,7 +60,7 @@ public class CarRepository implements PanacheRepository<Car> {
      * Método responsável por retornar a quantidade de veículos disponíveis para venda
      * @return Long
      */
-    public Long countCarsAvaiableSale() {
+    public Long countCarsAvailableSale() {
         return count("isAvailableSale", true);
     }
 

@@ -65,7 +65,7 @@ public class CarV2Resource {
 
     @POST
     public Response create(Car car) {
-        Car carEntity = carRepository.save(car);
+    	Car carEntity = carRepository.save(car);
         return Response.ok(car).status(Response.Status.CREATED).build();
     }
 
@@ -73,7 +73,7 @@ public class CarV2Resource {
     @Path("{id}")
     public Response update(@PathParam("id") Long id, Car car) {
 
-        Car carUpdated = carRepository.update(id, car);
+    	Car carUpdated = carRepository.update(id, car);
 
         return Response.ok(carUpdated).build();
     }

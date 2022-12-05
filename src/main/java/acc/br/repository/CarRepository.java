@@ -103,7 +103,7 @@ public class CarRepository implements PanacheRepository<Car> {
      */
     @Transactional
     public Car update(Long id, Car car) {
-        Car carEntity = findById(id);
+    	Car carEntity = findById(id);
 
         if (carEntity == null) {
             throw new WebApplicationException("Car with id of " + id + " does not exist.", Response.Status.NOT_FOUND);
@@ -123,7 +123,7 @@ public class CarRepository implements PanacheRepository<Car> {
      */
     @Transactional
     public void remove(Long id) {
-        Car carEntity = findById(id);
+    	Car carEntity = findById(id);
 
         if (carEntity == null) {
             throw new WebApplicationException("Car with id " + id + " does not exist.", Response.Status.NOT_FOUND);

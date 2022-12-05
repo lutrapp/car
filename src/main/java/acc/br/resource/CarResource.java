@@ -65,7 +65,7 @@ public class CarResource {
     @POST
     @Transactional
     public Response create(Car car) {
-        Car.persist(car);
+    	Car.persist(car);
         return Response.ok(car).status(Response.Status.CREATED).build();
     }
 
@@ -74,7 +74,7 @@ public class CarResource {
     @Transactional
     public Response update(@PathParam("id") Long id, Car car) {
 
-        Car carEntity = Car.findById(id);
+    	Car carEntity = Car.findById(id);
 
         if (carEntity == null) {
             throw new WebApplicationException("Car with id of " + id + " does not exist.", Response.Status.NOT_FOUND);
@@ -90,7 +90,7 @@ public class CarResource {
     @Path("{id}")
     @Transactional
     public Response delete(@PathParam("id") Long id) {
-        Car carEntity = Car.findById(id);
+    	Car carEntity = Car.findById(id);
 
         if (carEntity == null) {
             throw new WebApplicationException("Car with id " + id + " does not exist.", Response.Status.NOT_FOUND);
